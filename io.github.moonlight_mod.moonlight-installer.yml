@@ -28,7 +28,7 @@ modules:
     buildsystem: simple
     build-commands:
       - cd installer && cargo --offline fetch --manifest-path Cargo.toml
-      - cd installer && cargo --offline build --release
+      - cd installer && cargo --offline build --release --bin moonlight-installer
       - install -Dm755 installer/target/release/moonlight-installer /app/bin/moonlight-installer
       - install -Dm644 installer/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
       - install -Dm644 installer/moonlight-installer.desktop /app/share/applications/${FLATPAK_ID}.desktop
