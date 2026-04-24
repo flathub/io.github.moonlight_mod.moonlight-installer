@@ -23,19 +23,19 @@ build-options:
   append-path: "/usr/lib/sdk/rust-stable/bin"
   env:
     CARGO_HOME: "/run/build/moonlight-installer/cargo"
+    CARGO_NET_OFFLINE: "true"
 modules:
   - name: moonlight-installer
     buildsystem: simple
     build-commands:
-      - cd installer && cargo --offline fetch --manifest-path Cargo.toml
-      - cd installer && cargo --offline build --release --bin moonlight-installer
-      - install -Dm755 installer/target/release/moonlight-installer /app/bin/moonlight-installer
-      - install -Dm644 installer/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
-      - install -Dm644 installer/moonlight-installer.desktop /app/share/applications/${FLATPAK_ID}.desktop
-      - install -Dm644 installer/assets/icon.png /app/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
+      - cargo --offline fetch --manifest-path Cargo.toml
+      - cargo --offline build --release --bin moonlight-installer
+      - install -Dm755 target/release/moonlight-installer /app/bin/moonlight-installer
+      - install -Dm644 metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      - install -Dm644 moonlight-installer.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 assets/icon.png /app/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
     sources:
       - type: git
-        commit: 5053f534f425da7af47bf39ae5950b6697cea474
+        commit: 38d0fc360cf0a3a660fc76a771fda59f68f4273e
         url: https://github.com/moonlight-mod/moonlight-installer.git
-        dest: installer
       - cargo-sources.json
