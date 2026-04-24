@@ -18,6 +18,10 @@ finish-args:
   - --filesystem=xdg-data/DiscordPTB:rw
   - --filesystem=xdg-data/DiscordCanary:rw
   - --filesystem=xdg-data/DiscordDevelopment:rw
+  - --filesystem=xdg-config/discord:rw
+  - --filesystem=xdg-config/discordptb:rw
+  - --filesystem=xdg-config/discordcanary:rw
+  - --filesystem=xdg-config/discorddevelopment:rw
   - --filesystem=xdg-config/moonlight-mod:create
 build-options:
   append-path: "/usr/lib/sdk/rust-stable/bin"
